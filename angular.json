@@ -141,9 +141,10 @@
       }
     }
   },
-  "defaultProject": "theme",
   "cli": {
-    "defaultCollection": "@ngrx/schematics",
-    "analytics": "0491034f-baaa-4808-b006-cd57d73530eb"
+    "analytics": "0491034f-baaa-4808-b006-cd57d73530eb",
+    "schematicCollections": [
+      "@ngrx/schematics"
+    ]
   }
 }
