@@ -1,20 +1,20 @@
-import {Component, OnDestroy, OnInit} from '@angular/core'
-import {takeUntil} from 'rxjs/operators'
-import {Subject} from "rxjs"
-import {defaultRouterTransition, MenuType} from "../../../@youpez"
-import {SettingsService} from "../../../@youpez"
-import {AppMenuService} from "../../../@youpez"
+import { Component, OnDestroy, OnInit } from '@angular/core'
+import { takeUntil } from 'rxjs/operators'
+import { Subject } from "rxjs"
+import { defaultRouterTransition, MenuType } from "../../../@youpez"
+import { SettingsService } from "../../../@youpez"
+import { AppMenuService } from "../../../@youpez"
 
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
   animations: [
-    defaultRouterTransition,
+    defaultRouterTransition
   ],
 })
 export class LayoutComponent implements OnInit, OnDestroy {
-  private readonly onDestroy = new Subject<void>()
+  private readonly onDestroy = new Subject<void>();
 
   public mainSidebarOpts = {
     breakpoint: 'md',
@@ -24,10 +24,10 @@ export class LayoutComponent implements OnInit, OnDestroy {
     toggleableBtn: false,
     size: 'sideBar1',
   }
-  public miniSidebarOpts = {}
-  public settingsVisible: boolean = false
-  public searchVisible: boolean = false
-  public lockScreenVisible: boolean = false
+  public miniSidebarOpts = {};
+  public settingsVisible: boolean = false;
+  public searchVisible: boolean = false;
+  public lockScreenVisible: boolean = false;
 
   public menu: Array<MenuType> = [
     {
@@ -39,15 +39,50 @@ export class LayoutComponent implements OnInit, OnDestroy {
           url: '/app/dashboard/default',
           prefix: {
             type: 'ibm-icon',
-            name: 'home',
+            name: 'home'
+          },
+        },
+        // {
+        //   name: 'Platform analytics',
+        //   url: '/app/dashboard/analytics',
+        //   prefix: {
+        //     type: 'ibm-icon',
+        //     name: 'activity',
+        //   },
+        // },
+        // {
+        //   name: 'Stocks / crypto',
+        //   url: '/app/dashboard/crypto',
+        //   prefix: {
+        //     type: 'ibm-icon',
+        //     name: 'analytics',
+        //   },
+        //   suffix: {
+        //     type: 'badge',
+        //     level: 'default',
+        //     text: '!',
+        //   },
+        // },
+      ],
+    },
+    {
+      groupName: 'PAGES',
+      opened: false,
+      children: [
+        {
+          name: 'All Pages',
+          url: '/app/dashboard/default',
+          prefix: {
+            type: 'ibm-icon',
+            name: 'pages'
           },
         },
         {
-          name: 'Platform analytics',
+          name: 'Add new page',
           url: '/app/dashboard/analytics',
           prefix: {
             type: 'ibm-icon',
-            name: 'activity',
+            name: 'new page',
           },
         },
         // {
@@ -67,7 +102,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     },
     {
       groupName: 'APPLICATIONS',
-      opened: true,
+      opened: false,
       children: [
         {
           name: 'Scrum board',
@@ -124,7 +159,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     },
     {
       groupName: 'PAGES',
-      opened: true,
+      opened: false,
       children: [
         {
           name: 'User',
@@ -511,7 +546,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     },
     {
       groupName: 'Components',
-      opened: true,
+      opened: false,
       children: [
         {
           name: 'UI components',
@@ -629,7 +664,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     },
     {
       groupName: 'Menu features',
-      opened: true,
+      opened: false,
       children: [
         {
           name: 'Badge number',
@@ -726,7 +761,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     },
     {
       groupName: 'iconless features ',
-      opened: true,
+      opened: false,
       children: [
         {
           name: 'Iconless',
@@ -752,7 +787,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   ]
 
   constructor(private settingsService: SettingsService,
-              private appMenuService: AppMenuService) {
+    private appMenuService: AppMenuService) {
   }
 
   ngOnInit(): void {
@@ -761,53 +796,53 @@ export class LayoutComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.onDestroy))
       .subscribe((params) => {
         if (params === 'lock') {
-          this.lockScreenVisible = true
+          this.lockScreenVisible = true;
         }
       })
   }
 
   ngOnDestroy(): void {
-    this.onDestroy.next()
+    this.onDestroy.next();
   }
 
   onMiniSidebarItemClick(event) {
     if (event.key === 'theme') {
-      this.settingsVisible = !this.settingsVisible
+      this.settingsVisible = !this.settingsVisible;
     }
     if (event.key === 'search') {
-      this.searchVisible = true
+      this.searchVisible = true;
     }
   }
 
   onToggleThemeSettings() {
-    this.settingsVisible = true
+    this.settingsVisible = true;
   }
 
   onSideBarOpen(event) {
-    this.mainSidebarOpts.opened = true
+    this.mainSidebarOpts.opened = true;
   }
 
   onSideBarToggle(event) {
-    this.mainSidebarOpts.opened = !this.mainSidebarOpts.opened
+    this.mainSidebarOpts.opened = !this.mainSidebarOpts.opened;
   }
 
   onCloseSettings(event) {
-    this.settingsVisible = false
+    this.settingsVisible = false;
   }
 
   onSearchClose(event) {
-    this.searchVisible = false
+    this.searchVisible = false;
   }
 
   onLockClose(event) {
-    this.lockScreenVisible = false
+    this.lockScreenVisible = false;
   }
 
   onCloseSidebar() {
-    this.mainSidebarOpts.opened = false
+    this.mainSidebarOpts.opened = false;
   }
 
-  onVisibilityChange(event){
-    this.mainSidebarOpts.opened=event
+  onVisibilityChange(event) {
+    this.mainSidebarOpts.opened = event;
   }
 }

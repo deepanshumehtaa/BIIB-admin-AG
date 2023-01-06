@@ -187,6 +187,7 @@ body {
         @extend .app-row__fill;
         @extend .text-overflow-ellipsis;
         line-height: 1rem;
+        text-transform: capitalize;
 
         .app-sidebar__list__item__text__main {
           padding-top: 10px;

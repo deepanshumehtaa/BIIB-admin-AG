@@ -19,10 +19,10 @@ import {AppMenuService} from "../../../services/app-menu.service"
 })
 export class AppMenuItemComponent implements OnInit {
 
-  @Input('item') item: any = {}
-  @Output() toggle: EventEmitter<any> = new EventEmitter()
+  @Input('item') item: any = {};
+  @Output() toggle: EventEmitter<any> = new EventEmitter();
 
-  @ViewChild('parentHolder') parentHolder: ElementRef
+  @ViewChild('parentHolder') parentHolder: ElementRef;
   @ViewChildren('menuLevel') menuLevel: QueryList<AppMenuItemComponent>
 
   constructor(private router: Router,
@@ -34,9 +34,9 @@ export class AppMenuItemComponent implements OnInit {
 
   toggleParent(event) {
     if (!this.parentHolder) {
-      return
+      return;
     }
-    const element = this.parentHolder.nativeElement
+    const element = this.parentHolder.nativeElement;
 
     if (element.contains(event.target)) {
       element.classList.contains('app-sidebar__list__item--opened') ?
@@ -44,27 +44,27 @@ export class AppMenuItemComponent implements OnInit {
         : element.classList.add('app-sidebar__list__item--opened')
     }
     else {
-      element.classList.remove('app-sidebar__list__item--opened')
+      element.classList.remove('app-sidebar__list__item--opened');
     }
   }
 
   onToggle(event) {
     this.menuLevel.map((item) => {
-      item.toggleParent(event)
+      item.toggleParent(event);
     })
   }
 
   onClick() {
     if (this.item.callback !== undefined) {
-      this.appMenuService.itemClick(this.item.callback)
+      this.appMenuService.itemClick(this.item.callback);
     }
   }
 
   isRouteActive(url) {
     if (!url) {
-      return false
+      return false;
     }
-    return this.router.isActive(url, false)
+    return this.router.isActive(url, false);
   }
 
 }

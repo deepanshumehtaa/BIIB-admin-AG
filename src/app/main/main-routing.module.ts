@@ -144,13 +144,13 @@ const routeForPages:any = [
           breadcrumb: 'Default'
         },
       },
-      {
-        path: 'analytics',
-        component: DashboardAnalyticsComponent,
-        data: {
-          breadcrumb: 'Analytics'
-        },
-      }
+      // {
+      //   path: 'analytics',
+      //   component: DashboardAnalyticsComponent,
+      //   data: {
+      //     breadcrumb: 'Analytics'
+      //   },
+      // }
     ],
   },
   {

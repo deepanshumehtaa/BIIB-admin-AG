@@ -7,10 +7,10 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core'
 })
 export class AppMenuHeaderComponent implements OnInit {
 
-  @Input('groupName') groupName: string = ''
-  @Input('opened') opened: boolean = true
+  @Input('groupName') groupName: string = '';
+  @Input('opened') opened: boolean = true;
 
-  @Output('toggle') toggle: EventEmitter<any> = new EventEmitter()
+  @Output('toggle') toggle: EventEmitter<any> = new EventEmitter();
 
   constructor() {
   }
@@ -19,7 +19,7 @@ export class AppMenuHeaderComponent implements OnInit {
   }
 
   onToggle() {
-    this.toggle.next()
+    this.toggle.next();
   }
 
 }
