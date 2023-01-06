@@ -9,6 +9,9 @@
   "compilerOptions": {
     "experimentalDecorators": true,
   },
+  "angularCompilerOptions": {
+    "compilationMode": "partial",
+  },
   "references": [
     {
       "path": "./tsconfig.app.json"

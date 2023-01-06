@@ -130,7 +130,7 @@ const starterPages = [
   }
 ]
 
-const routeForPages = [
+const routeForPages:any = [
   {
     path: 'dashboard',
     data: {
